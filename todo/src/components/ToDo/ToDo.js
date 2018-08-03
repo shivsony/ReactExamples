@@ -3,20 +3,31 @@ import { Component } from 'react';
 import List from './List';
 import './ToDo.css';
 
+
+
 class ToDo extends Component {
     constructor(props){
         super(props);
         this.state = {
-            list: []
+            items: props.items
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.Update = this.Update.bind(this)
     }
     handleSubmit(event) {
         event.preventDefault();
+        var input = event.target.querySelector('input');
+        var text = input.value;
+        this.Update(text);
+        input.value = ''
+    }
+
+    Update(text) {
+        var newitems = this.state.items
+        newitems.push(text) ;
         this.setState({
-            list: this.state.list.push(event.target.value)
-        })
-        console.log(this.state.list);
+            items: newitems
+        }) 
     }
 
 
@@ -24,11 +35,11 @@ class ToDo extends Component {
         return(
             <div className="todo-card">
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text"  placeholder="todo"/>
+                    <input type="text"  placeholder="list..."/>
                     <button >submit</button>
                 </form>
                 <ul>
-                    <List list={this.state.list}/>
+                    <List list={this.state.items}/>
                 </ul>
             </div>
         );

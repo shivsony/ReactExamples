@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
+import './List.css';
 
 class List extends Component {
     constructor(props){
         super(props);
     }
     render() {
-        const {list} = this.props
+        var itemList = this.props.list.map((elem,i)=>{
+            return(<li key={i}>{elem}</li>)
+        });
         return(
-            <li>{list}</li>
+            <ul>
+                {itemList}
+            </ul>
         );
     }
 } 

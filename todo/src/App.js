@@ -8,23 +8,20 @@ import { Provider } from 'react-redux';
 
 const Reducer = (state,action) => {
     if(action.type==='add'){
-      return([...state])
+      return([...state,action.text])
     }
 }
 
 const store = createStore(Reducer,[],window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-const action = {
-  type: 'add'
-}
-
+var items = ['item1','item2'];
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <div className="App">
-          <Header title="Todo App"/>
-          <ToDo/>
+          <Header title="App"/>
+          <ToDo items={items}/>
         </div>
       </Provider>
     );

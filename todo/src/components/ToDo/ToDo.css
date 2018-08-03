@@ -4,5 +4,12 @@
     padding: 2%;
     background: #fff;
     box-shadow: 1px 7px 20px 1px #888888;
+}
 
+input {
+    padding: 1%;
+    border-radius: 2%;
+}
+button {
+    padding: 1%;
 }
