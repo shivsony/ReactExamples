@@ -35,7 +35,7 @@ class ToDo extends Component {
         return(
             <div className="todo-card">
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text"  placeholder="list..."/>
+                    <input type="text"  placeholder="Add todo list..."/>
                     <button >submit</button>
                 </form>
                 <ul>

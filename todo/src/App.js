@@ -6,21 +6,23 @@ import Header from './components/Header/Header';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-const Reducer = (state,action) => {
+const Reducer = (state=[],action) => {
     if(action.type==='add'){
-      return([...state,action.text])
+      return(state.concat(action.payload))
+    } else {
+      return state;
     }
 }
+const newLocal = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const store = createStore(Reducer,newLocal);
 
-const store = createStore(Reducer,[],window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
-var items = ['item1','item2'];
+var items = [];
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <div className="App">
-          <Header title="App"/>
+          <Header title="ToDo"/>
           <ToDo items={items}/>
         </div>
       </Provider>
